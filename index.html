@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 투두리스트 -->
+    <h1 id="todo-list">투두리스트</h1>
+
+    <!-- 투두 입력 공간 -->
+    <form id="todo-form" class="hidden">
+        <input type="text" id="todo" value="할 일을 입력하세요">
+        <input type="button" value="+">
+    </form>
+
+    <!-- 투두 보드 출력  -->
+    <ul id="todo-board">
+        <li>
+            <input type="checkbox">
+            청소
+            <button>X</button>
+        </li>
+        <li>
+            <input type="checkbox">
+            공부
+            <button>X</button>
+        </li>
+        <li>
+            <input type="checkbox">
+            기타등등
+            <button>X</button>
+        </li>
+    </ul>
+
+    <!-- 텍스트 -->
+    <p>오늘 완료한 일 : 개</p>
+
+    <!-- 자바스크립트-->
+    <script src="./JS/todolist.js"></script>
+</body>
+</html>

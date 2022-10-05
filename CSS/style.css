@@ -1,0 +1,64 @@
+.hidden {
+    display: none;
+}
+/* #clock{
+    color: white;
+    text-align: center;
+    text-shadow: 0px 0px 7px gray;
+    font-size: 4em;
+}*/
+
+form {
+    text-align: center;
+}
+
+#title {
+    color: white;
+}
+
+form input[type="text"]{
+    background-color: transparent;
+    border : none;
+    border-bottom : solid 1px white;
+    color : white;
+}
+
+form input[type="text"]:focus {
+    outline : none;
+}
+
+form input[type="submit"], form input[type="button"], #todo-board li button {
+border : none;
+/*border-radius : 20px;*/
+padding : 5px 10px;
+}
+
+form input[type="submit"]:hover {
+    background-color: blanchedalmond;
+}
+
+
+#todo-board {
+    list-style : none;
+    margin-right : 40px;
+}
+
+#todo-board li {
+    color : black;
+    clear : both;
+    margin-top : 10px;
+
+}
+
+/*#todo-board li button form input[type="checkbox"]:checked {
+    color:lightgray;
+}*/
+
+#todo-board li button [type="checkbox"]:checked{   
+    float : left;
+}
+
+#todo-board li button:hover{
+    background-color: hotpink;
+    color : white;
+}
