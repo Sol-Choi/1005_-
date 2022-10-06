@@ -1,64 +1,71 @@
-// todo 입력 공간 가져오기
-const todoInput = document.querySelector("#todo-form #todo")
+// todo 입력 form 가져와서 submit(이벤트)을 눌렀을 때 함수 실행
+const todoForm = document.querySelector("#todo-form");
 
-// todo button : click 이벤트로 실행 
-// button에 아이디를 주지않았기때문에, 노드로 접근을하거나.
-// querySelector를 이용하여 선택자를 이용하여 접근해서 객체를 가져온다
-const todoButton = todoInput.nextElementSibling;
+// todo 입력 DOM 가져오기
+const todoInput = document.querySelector("#todo-form #todo-input")
 
-// todo board 객체 가져오기
-const todoBoard = document.querySelector("#todo-board");
+// 완료한 할 일 DOM 가져오기
+const countText = document.querySelector("#count");
 
-// 버튼에 이벤트 리스너 : button 이므로 click이벤트
-todoButton.addEventListener("click", addTodo);
+// 완료한 할 일 변수
+let count = 0;
 
-function addTodo() {
-    //console.log("확인");
-    // todoInput -value 값을 들고옴
-    const text = todoInput.value;
+// todoForm에 submit 이벤트 발생시 함수 추가
+todoForm.addEventListener("submit", todoAdd);
 
-    // 새로 요소 생성
-    // li , input type="checkbox", textNode, button
+// 실행될 함수 작성 : todo list 추가
+function todoAdd(e){
+    e.preventDefault();
+    
+    // 요소 생성
     const li = document.createElement("li");
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-
-    const textNode = document.createTextNode(text);
+    const text= document.createTextNode(todoInput.value);
     const button = document.createElement("button");
-
-    // li요소 - input, textNode, button 추가
-    li.appendChild(checkbox);
-    li.appendChild(textNode);
-    li.appendChild(button);
-
-    // todoBoard - li 추가
-    todoBoard.append(li);
-        
-    // todoInput.value값을 빈값으로 만들기
-    todoInput.value = "";
-
-    // button에 X 문자열 추가
     button.innerHTML = "X";
 
-    // 체크박스를 눌렀을때 이벤트 리스너 실행 : click
+    // 요소를 li 안에 추가
+    li.append(checkbox);
+    li.append(text);
+    li.append(button);
+
+    // todo-board에 li요소 추가
+    document.querySelector("#todo-board").append(li);
+
+    // todoInput의 값 비우기
+    todoInput.value = "";
+
+    // checkbox에 클릭 이벤트 삽입 - text 색상 회색
     checkbox.addEventListener("click", todoCheck);
-    
-    // X버튼을 눌렀을때 이벤트 리스너 실행 : click
+
+    // button에 클릭 이벤트 삽입 - li 삭제
     button.addEventListener("click", todoDelete);
 }
 
-// 체크박스 이벤트 리스너에 들어가는 함수
-function todoCheck(e) {
-    const li = e.target.parentNode;
-    if (e.target.checked) 
-        li.style.color = "lightgray";
-    else 
-        li.style.color = "black";
+function todoCheck(e){
+    // check 표시가 되면 색상을 회색으로 바꿈
+    // checkbox에서 체크 여부 알 수 있음
+    // console.dir(e.target);
+    if (e.target.checked) {
+        e.target.parentNode.style.color = "lightgray";
+        // count 값을 1 증가
+        count++;
+        countText=innerHTML=count;
+    } else {
+        e.target.parentNode.style.color = "black";
+        // count 값을 1 감소
+        count--;
+        countText=innerHTML=count;
+    }
 }
 
-// X버튼 이벤트 리스너에 들어갈 함수
 function todoDelete(e) {
-    // li요소를 삭제
-    const li = e.target.parentNode;
-    li.remove();
+    // console.dir(e.target.parentNode)
+    if(e.target.parentNode.firstChild.checked); {
+        count--;
+        countText.innerHTML = count;
+    }
+    
+    e.target.parentNode.remove();
 }
